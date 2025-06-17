@@ -22,21 +22,28 @@
 #define HEIGHT  256
 #define WIDTH   256
 
-// typedef struct  s_mlx
-// {
-//     void* window;
-//     void* context;
-//     int32_t width;
-//     int32_t height;
-//     double  delta_time;
-// } mlx_t;
+# define KEY_ESC 53
+# define KEY_UP 126
+# define KEY_DOWN 125
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define KEY_R  15
+# define KEY_C  8
+# define KEY_SPACE 49
 
-// typedef struct  s_keyhooks
-// {
-//     keys_t  key;
-//     action_t    action;
-// }mlx_key_t;
+
+typedef struct f_fractol
+{
+    mlx_t *mlx;
+    mlx_image *image;
+    double zoom;
+    double x;
+    double y;
+    int iter;
+    int color_shift;
+}t_fract
 
 void    error_usage(void);
+void key_hook(mlx_key_data_t keydata, void *param);
 
 #endif
