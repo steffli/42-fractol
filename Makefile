@@ -14,14 +14,18 @@ LFLAGS = -lglfw -lGL -lX11 -lpthread -lXrandr -lXinerama -lXcursor -lm -ldl
 SRCS		= srcs/main.c \
 			  srcs/fractal.c \
 			  srcs/rendering.c \
-			  srcs/events.c \
-			  srcs/parsing.c
+			  srcs/init.c \
+			  srcs/parsing.c \
+			  srcs/keyhook.c \
+			  srcs/zoom.c
 
 OBJS		= objs/main.o \
 			  objs/fractal.o \
 			  objs/rendering.o \
-			  objs/events.o \
-			  objs/parsing.o
+			  objs/parsing.o \
+			  objs/init.o \
+			  objs/zoom.o \
+			  objs/keyhook.o
 
 LIBFT		= $(LIBFT_DIR)/libft.a
 PRINTF		= $(PRINTF_DIR)/ft_printf.a
