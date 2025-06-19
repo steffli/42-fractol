@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:01:45 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/18 14:02:50 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/19 15:50:00 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 {
     t_fract fractal;
     
-    if (argc != 2)
+    if (argc != 2 || (argc == 2 && argv[1][0] == '\0'))
         error_usage();
     init_fract(&fractal);
     mlx_set_setting(MLX_MAXIMIZED, true);
@@ -62,8 +62,9 @@ int main(int argc, char **argv)
     mlx_key_hook(fractal.mlx, key_hook, &fractal);
     mlx_scroll_hook(fractal.mlx, &scroll_hook, &fractal);
     mlx_loop_hook(fractal.mlx, &ft_hook, &fractal);
+    mlx_close_hook(fractal.mlx,(void(*)(void*))clean_exit, &fractal);
     mlx_loop(fractal.mlx);
-    mlx_terminate(fractal.mlx);
+    clean_exit(&fractal);
     return (EXIT_SUCCESS);
     // fractal = malloc(size_of(fracatal));
     // mlx_t *mlx = mlx_init(WIDTH, HEIGHT, "Fractol", true);
