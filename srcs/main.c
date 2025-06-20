@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:01:45 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/19 15:50:00 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/20 12:29:13 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void error(void)
 
 static void ft_hook(void *param)
 {
-    t_fract *fractal = param;
-
+    t_fract *fractal;
+    
+    fractal = param;
     ft_memset(fractal->image->pixels, 0, fractal->image->width * fractal->image->height * sizeof(int32_t));
     input_fractal(fractal, fractal->name);
 }

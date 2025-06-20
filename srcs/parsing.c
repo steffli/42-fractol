@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:55:33 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/19 15:30:16 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/20 12:27:22 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ void clean_exit(t_fract *fractal)
 
 void exit_hook(void *param)
 {
-    t_fract *fractal = param;
+    t_fract *fractal;
 
+    fractal = param;
     if (mlx_is_key_down(fractal->mlx, MLX_KEY_ESCAPE))
         clean_exit(fractal);
 }

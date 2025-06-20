@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:52:57 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/19 15:30:01 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/20 12:25:42 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ void    key_hook(mlx_key_data_t hook, void *param)
 
 void scroll_hook(double xdelta, double ydelta, void *param)
 {
-    t_fract *fractal = param;
+    t_fract *fractal;
     
+    fractal = param;
     (void)xdelta;
     int32_t mouse_x;
     int32_t mouse_y;
