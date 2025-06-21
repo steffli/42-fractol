@@ -12,11 +12,6 @@
 
 #include "fractol.h"
 
-void error(void)
-{
-    ft_printf("Error");
-    exit(EXIT_FAILURE);
-}
 
 static void ft_hook(void *param)
 {
@@ -41,21 +36,40 @@ int input_fractal(t_fract *fractal)
     }
         return (0);
 }
+int is_valid_float(char *str)
+{
+    //take string and declare float type
+    //compare both numbers if greater than 2 or smaller 
+    //take get double and check if the double value is within the threshhold
+    continue;
+}
+//check for integers if float or int and then pass
+int check_arg(t_fract *fractal, int argc, char **argv)
+{
+    if (argc < 2 || argc > 4)
+        return (error_usage(), 0);
+    if (argc == 2 && ft_strnmp(argv[1], "mandelbrot", 11) == 0)
+    {
+        return (1);
+    }
+    if (argc == 4 && ft_strncmp("julia", argv[1], 6) == 0)
+    {
+        is_valid_float(argv[2]);
+        is_valid_float(argv[3]);
+        return (1);
+    }
+    return (0);
+}
 
 
 int main(int argc, char **argv)
 {
     t_fract fractal;
     
-    if (argc < 2 || argc > 4)
-        error_usage();
+    if (!check_arg(&fractal, argc, argv))
+        error();
     init_fract(&fractal);
     fractal.name = argv[1];
-    if (argc >= 4 && ft_strncmp("julia", argv[1], 6) == 0)
-    {
-        fractal.julia_cx = ft_atof(argv[2]);
-        fractal.julia_cy = ft_atof(argv[3]);
-    }
     mlx_set_setting(MLX_MAXIMIZED, true);
     fractal.mlx = mlx_init(WIDTH, HEIGHT, "Fractol", true);
     if (!fractal.mlx)

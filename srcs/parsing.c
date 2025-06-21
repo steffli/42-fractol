@@ -36,3 +36,9 @@ void exit_hook(void *param)
     if (mlx_is_key_down(fractal->mlx, MLX_KEY_ESCAPE))
         clean_exit(fractal);
 }
+
+void error(void)
+{
+    ft_printf("Error");
+    exit(EXIT_FAILURE);
+}
