@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:52:57 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/20 12:25:42 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/21 13:05:56 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void    key_hook(mlx_key_data_t hook, void *param)
         else if (hook.key == MLX_KEY_R)
             init_fract(fractal);
     }
-    input_fractal(fractal, fractal->name);
+    input_fractal(fractal);
 }
 
 void scroll_hook(double xdelta, double ydelta, void *param)

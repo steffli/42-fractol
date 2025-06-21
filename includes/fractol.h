@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:50:00 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/19 15:48:51 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/21 13:03:59 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void        init_fract(t_fract *fractal);
 void        init_mlx(t_fract *fractal);
 
 //Thresh Q
-void        key_hook(mlx_key_data_t keydata, void *param);
+void        key_hook(mlx_key_data_t hook, void *param);
 void        scroll_hook(double xdelta, double ydelta, void*param);
 
 //Fractals
@@ -57,8 +57,9 @@ void        julia(t_fract *f);
 void        error_usage(void);
 void        error(void);
 void        zoom(t_fract *fractal, double x, double y, int direction);
-int         input_fractal(t_fract *fractal, char *input);
+int         input_fractal(t_fract *fractal);
 uint32_t    get_color(int iter, int max_iter, int shift);
 void        clean_exit(t_fract *fractal);
+double      ft_atof(char *str);
 
 #endif

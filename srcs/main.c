@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:01:45 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/20 12:29:13 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/21 13:07:48 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,33 +24,38 @@ static void ft_hook(void *param)
     
     fractal = param;
     ft_memset(fractal->image->pixels, 0, fractal->image->width * fractal->image->height * sizeof(int32_t));
-    input_fractal(fractal, fractal->name);
+    input_fractal(fractal);
 }
 
-int input_fractal(t_fract *fractal, char *input)
+int input_fractal(t_fract *fractal)
 {
-    if (ft_strncmp("mandelbrot", input, 11) == 0)
+    if (ft_strncmp("mandelbrot", fractal->name, 11) == 0)
     {
-        fractal->name = "mandelbrot";
         mandelbrot(fractal);
         return (1);
     }
-    else if (ft_strncmp("julia", input, 6) == 0)
+    else if (ft_strncmp("julia", fractal->name, 6) == 0)
     {   
-        fractal->name = "julia";    
         julia(fractal);
         return (1);
     }
-    return (0);
+        return (0);
 }
+
 
 int main(int argc, char **argv)
 {
     t_fract fractal;
     
-    if (argc != 2 || (argc == 2 && argv[1][0] == '\0'))
+    if (argc < 2 || argc > 4)
         error_usage();
     init_fract(&fractal);
+    fractal.name = argv[1];
+    if (argc >= 4 && ft_strncmp("julia", argv[1], 6) == 0)
+    {
+        fractal.julia_cx = ft_atof(argv[2]);
+        fractal.julia_cy = ft_atof(argv[3]);
+    }
     mlx_set_setting(MLX_MAXIMIZED, true);
     fractal.mlx = mlx_init(WIDTH, HEIGHT, "Fractol", true);
     if (!fractal.mlx)
@@ -58,7 +63,7 @@ int main(int argc, char **argv)
     fractal.image = mlx_new_image(fractal.mlx, WIDTH, HEIGHT);
     if (!fractal.image || (mlx_image_to_window(fractal.mlx, fractal.image, 0, 0) < 0))
         error();
-    if (!input_fractal(&fractal, argv[1]))
+    if (!input_fractal(&fractal))
         error_usage();
     mlx_key_hook(fractal.mlx, key_hook, &fractal);
     mlx_scroll_hook(fractal.mlx, &scroll_hook, &fractal);
@@ -67,17 +72,4 @@ int main(int argc, char **argv)
     mlx_loop(fractal.mlx);
     clean_exit(&fractal);
     return (EXIT_SUCCESS);
-    // fractal = malloc(size_of(fracatal));
-    // mlx_t *mlx = mlx_init(WIDTH, HEIGHT, "Fractol", true);
-    // if (!mlx)
-    //     error();
-    // mlx_image_t *image = mlx_new_image(mlx, WIDTH, HEIGHT);
-    // if (!image || (mlx_image_to_window(mlx, image, 0, 0) < 0))
-    //     error();
-    // mlx_put_pixel(image, 300, 300, 000000);
-    // mlx_key_hook(fractal, &ft_keyhook, NULL);
-    // mlx_scroll_hook(fractal, &ft_mousehook, NULL);
-    // mlx_loop_hook(mlx, ft_hook, mlx);
-    // mlx_loop(mlx);
-    // mlx_terminate(mlx);
 }
