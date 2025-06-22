@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:55:33 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/20 12:27:22 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/22 14:48:44 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void    error_usage(void)
 {
     ft_printf("Usage: ./fractol [fractal_name]\n");
-    ft_printf("Avaiable fractals:\n - mandelbrot\n - julia");
+    ft_printf("Avaiable fractals:\n - mandelbrot\n - julia\n");
+    ft_printf("If you use Julia the numbers must be between -2.0 and 2.0");
     exit(1);
 }
 
@@ -40,5 +41,5 @@ void exit_hook(void *param)
 void error(void)
 {
     ft_printf("Error");
-    exit(EXIT_FAILURE);
+    exit(1);
 }

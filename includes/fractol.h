@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:50:00 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/21 13:03:59 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/22 18:09:10 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_fractol
 
 //Inits
 void        init_fract(t_fract *fractal);
-void        init_mlx(t_fract *fractal);
+int         init_mlx(t_fract *fractal);
 
 //Thresh Q
 void        key_hook(mlx_key_data_t hook, void *param);

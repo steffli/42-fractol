@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:49:52 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/21 12:41:52 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/22 14:48:30 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,26 @@ void init_fract(t_fract *fractal)
     fractal->iter = 100;
     fractal->x_shift = 0;
     fractal->y_shift = 0;
-    fractal->julia_cx = -0.7;
-    fractal->julia_cy = 0.27;
 }
 
-void init_mlx(t_fract *fractal)
+int init_mlx(t_fract *fractal)
 {
     fractal->mlx = mlx_init(WIDTH, HEIGHT, "Fractol", true);
     if (!fractal->mlx)
-        error();
+        return (error(), 0);
     fractal->image = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
-    if (!fractal->image || (mlx_image_to_window(fractal->mlx, fractal->image, 0 , 0) < 0))
+    if (!fractal->image)
+    {
+        mlx_terminate(fractal->mlx);
         error();
-    return ;
+        return (0);
+    }
+    if (mlx_image_to_window(fractal->mlx, fractal->image, 0, 0) < 0)
+    {
+        mlx_delete_image(fractal->mlx, fractal->image);
+        mlx_terminate(fractal->mlx);
+        error();
+        return (0);
+    }
+    return (1);
 }
