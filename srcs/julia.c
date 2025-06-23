@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:04:23 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/23 12:23:52 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:56:25 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void	julia(t_fract *fractal)
 	y = 0;
 	if (!fractal || !fractal->image)
 		return ;
-	while (y < HEIGHT)
+	while (y < fractal->height)
 	{
 		x = 0;
-		while (x < WIDTH)
+		while (x < fractal->width)
 		{
-			zx = (x - WIDTH / 2.0) / (0.25 * fractal->zoom * WIDTH)
-				+ fractal->x_shift;
-			zy = (y - HEIGHT / 2.0) / (0.25 * fractal->zoom * HEIGHT)
-				+ fractal->y_shift;
+			zx = (x - fractal->width / 2.0)
+				/ (0.25 * fractal->zoom * fractal->width) + fractal->x_shift;
+			zy = (y - fractal->height / 2.0)
+				/ (0.25 * fractal->zoom * fractal->height) + fractal->y_shift;
 			mlx_put_pixel(fractal->image, x, y, julia_color(fractal, zx, zy));
 			x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:01:45 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/23 12:29:57 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:38:19 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int	main(int argc, char **argv)
 	mlx_scroll_hook(fractal.mlx, &scroll_hook, &fractal);
 	mlx_loop_hook(fractal.mlx, &ft_hook, &fractal);
 	mlx_close_hook(fractal.mlx, (void (*)(void *))clean_exit, &fractal);
+	mlx_resize_hook(fractal.mlx, resize_hook, &fractal);
 	mlx_loop(fractal.mlx);
 	clean_exit(&fractal);
 	return (EXIT_SUCCESS);

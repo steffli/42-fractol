@@ -6,7 +6,7 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:19:55 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/23 12:24:06 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:55:44 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	zoom(t_fract *fractal, double x, double y, int direction)
 	double	mouse_y;
 
 	zoom = 1.2;
-	mouse_x = (x - WIDTH / 2.0) / (0.25 * fractal->zoom * WIDTH)
-		+ fractal->x_shift;
-	mouse_y = (y - HEIGHT / 2.0) / (0.25 * fractal->zoom * HEIGHT)
-		+ fractal->y_shift;
+	mouse_x = (x - fractal->width / 2.0)
+		/ (0.25 * fractal->zoom * fractal->width) + fractal->x_shift;
+	mouse_y = (y - fractal->height / 2.0)
+		/ (0.25 * fractal->zoom * fractal->height) + fractal->y_shift;
 	if (direction > 0)
 	{
 		fractal->zoom *= zoom;
