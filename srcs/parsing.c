@@ -6,40 +6,40 @@
 /*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:55:33 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/22 14:48:44 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:12:00 by stephan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void    error_usage(void)
+void	error_usage(void)
 {
-    ft_printf("Usage: ./fractol [fractal_name]\n");
-    ft_printf("Avaiable fractals:\n - mandelbrot\n - julia\n");
-    ft_printf("If you use Julia the numbers must be between -2.0 and 2.0");
-    exit(1);
+	ft_printf("Usage: ./fractol [fractal_name]\n");
+	ft_printf("Avaiable fractals:\n - mandelbrot\n - julia\n");
+	ft_printf("If you use Julia the numbers must be between -2.0 and 2.0");
+	exit(1);
 }
 
-void clean_exit(t_fract *fractal)
+void	clean_exit(t_fract *fractal)
 {
-    if (fractal->image)
-        mlx_delete_image(fractal->mlx, fractal->image);
-    if (fractal->mlx)
-        mlx_terminate(fractal->mlx);
-    exit(EXIT_SUCCESS);
+	if (fractal->image)
+		mlx_delete_image(fractal->mlx, fractal->image);
+	if (fractal->mlx)
+		mlx_terminate(fractal->mlx);
+	exit(EXIT_SUCCESS);
 }
 
-void exit_hook(void *param)
+void	exit_hook(void *param)
 {
-    t_fract *fractal;
+	t_fract	*fractal;
 
-    fractal = param;
-    if (mlx_is_key_down(fractal->mlx, MLX_KEY_ESCAPE))
-        clean_exit(fractal);
+	fractal = param;
+	if (mlx_is_key_down(fractal->mlx, MLX_KEY_ESCAPE))
+		clean_exit(fractal);
 }
 
-void error(void)
+void	error(void)
 {
-    ft_printf("Error");
-    exit(1);
+	ft_printf("Error");
+	exit(1);
 }
