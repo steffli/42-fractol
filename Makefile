@@ -9,7 +9,7 @@ MLX42_DIR	= libs/MLX42
 SRCS_DIR	= srcs
 OBJS_DIR	= objs
 INCLUDE_DIR	= includes
-LFLAGS = -lglfw -lGL -lX11 -lpthread -lXrandr -lXinerama -lXcursor -lm -ldl
+LFLAGS = -ldl -lglfw -pthread -lm
 
 SRCS		= srcs/main.c \
 			  srcs/julia.c \

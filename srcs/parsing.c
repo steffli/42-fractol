@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: stliu <stliu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:55:33 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/23 12:12:00 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/24 16:18:15 by stliu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	error_usage(void)
 	ft_printf("Usage: ./fractol [fractal_name]\n");
 	ft_printf("Avaiable fractals:\n - mandelbrot\n - julia\n");
 	ft_printf("If you use Julia the numbers must be between -2.0 and 2.0");
+	ft_printf("Here some paramaters with meaningful fractals:\n");
+	ft_printf("-0.8\t\t0.156\n−0.70176\t−0.3842\n−0.835\t\t− 0.2321");
 	exit(1);
 }
 

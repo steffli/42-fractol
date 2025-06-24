@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephan <stephan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: stliu <stliu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:01:45 by stephan           #+#    #+#             */
-/*   Updated: 2025/06/23 12:38:19 by stephan          ###   ########.fr       */
+/*   Updated: 2025/06/24 18:03:38 by stliu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,17 @@ int	is_valid_float(char *str)
 		i++;
 	if (!ft_isdigit(str[i]))
 		return (0);
-	while (ft_isdigit(str[i]))
-	{
+	while (ft_isdigit(str[i++]))
 		digits = 1;
-		i++;
-	}
-	if (str[i] == '.')
+	if (str[--i] == '.')
 	{
-		i++;
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[++i]))
 			return (0);
-		while (ft_isdigit(str[i]))
-		{
+		while (ft_isdigit(str[i++]))
 			digits = 1;
-			i++;
-		}
+		--i;
 	}
-	if (!digits || str[i] != '\0')
-		return (0);
-	return (1);
+	return (digits && str[i] == '\0');
 }
 
 //check for integers if float or int and then pass
